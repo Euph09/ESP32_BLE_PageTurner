@@ -6,3 +6,4 @@
 .clang_complete
 .gcc-flags.json
 .bindings
+.vscode/extensions.json
