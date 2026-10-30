@@ -1,18 +1,30 @@
 #include <Arduino.h>
 #include <BleKeyboard.h>
 
-// put function declarations here:
+BleKeyboard bleKeyboard;
+const int button_pin = 18;
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(115200);
+  Serial.println("Starting BLE work!");
+  bleKeyboard.begin();
+  pinMode(button_pin,INPUT_PULLUP);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+  int buttonState =digitalRead(button_pin);
+  if(bleKeyboard.isConnected()) {
+    
+    Serial.println("Connected to device ");
+    if (buttonState==LOW){
+      Serial.println("Button pressed");
+      bleKeyboard.write(KEY_RIGHT_ARROW);
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+    }
+
+    
+  }
+
+  Serial.println("Waiting 0.1 seconds...");
+  delay(100);
 }
