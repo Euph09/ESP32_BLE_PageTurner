@@ -6,8 +6,9 @@ const int RButton_pin = 18;
 const int LButton_pin = 23;
 bool previouslyConnected =false;
 
+//Prevents button if held turning multiple pages
 bool leftUp = true;
-bool rightUp=false;
+bool rightUp=true;
 
 void setup() {
   Serial.begin(115200);
